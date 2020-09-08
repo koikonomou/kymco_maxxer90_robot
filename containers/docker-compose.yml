@@ -3,7 +3,7 @@ services:
     simulation:
         image: kymco_im
         network_mode: host
-        command: bash -c "pkill Xvfb; rm /tmp/.X1-lock; Xvfb :1 -screen scrn 640x480x16 & export DISPLAY=:1 && roslaunch kymco_maxxer90_gazebo kymco_maxxer90_empty_world.launch"
+        command: bash -c "pkill Xvfb; rm /tmp/.X1-lock; Xvfb :1 -screen scrn 640x480x16 & export DISPLAY=:1.0 && roslaunch kymco_maxxer90_gazebo kymco_maxxer90_empty_world.launch"
     un_pause_simulation:
         image: kymco_im
         network_mode: host
@@ -15,7 +15,8 @@ services:
         network_mode: host
         command: bash -c "sleep 10; roslaunch kymco_maxxer90_navigation robot_localization.launch"
         depends_on:
-            - simulation            
+            - simulation
+            - un_pause_simulation          
     move_base:
         image: kymco_im
         network_mode: host
@@ -23,3 +24,4 @@ services:
         depends_on:
             - simulation
             - localization
+            - un_pause_simulation
