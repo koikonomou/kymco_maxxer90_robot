@@ -13,6 +13,12 @@ RUN apt-get update && apt-get install -y \
     python-genpy \
     libignition-msgs-dev \
     ros-melodic-rosmsg \
+    ros-melodic-costmap-2d \
+    ros-melodic-costmap-queue \
+    ros-melodic-octomap-mapping \
+    ros-melodic-octomap-msgs \
+    ros-melodic-octomap-ros \
+    ros-melodic-octomap-server \
     ros-melodic-ros-control \
     ros-melodic-ros-controllers \
     ros-melodic-hector-gazebo-plugins \
@@ -47,7 +53,7 @@ RUN apt-get -y upgrade &&\
     git clone https://github.com/osrf/gazebo_models && \
     git clone https://github.com/roboskel/roboskel_ros_resources && \
     git clone https://github.com/roboticsgroup/roboticsgroup_gazebo_plugins && \
-    git clone https://github.com/koikonomou/kymco_maxxer90_robot && \
+    git clone https://github.com/roboskel/kymco_maxxer90_robot && \
     mkdir -p ~/.gazebo/models && \
     mv gazebo_models/* ~/.gazebo/models/ && \
     rm -rf gazebo_models && \

@@ -25,3 +25,11 @@ services:
             - simulation
             - localization
             - un_pause_simulation
+    octomap_mapping:
+        image: kymco_im
+        network_mode: host
+        command: bash -c "sleep 10; roslaunch kymco_maxxer90_navigation octomap_mapping_depth.launch"
+        depends_on:
+            - simulation
+            - localization
+            - move_base
